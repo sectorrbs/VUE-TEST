@@ -1,0 +1,108 @@
+.checker {
+	position: relative;
+	@include inline;
+	@include size(15px, 15px);
+
+	input {
+		display: block;
+		@include position(absolute, 0, 0, null, null, 5);
+		@include size(100%, 100%);
+		opacity: 0;
+		cursor: pointer;
+
+		&:hover {
+			+ .checker-view {
+				border-color: $color-orange;
+			}
+		}
+
+		&:checked {
+			+ .checker-view {
+				background: $color-orange;
+				border-color: $color-orange;
+			}
+		}
+
+		&[disabled] {
+			+ .checker-view {
+				background: $color-gray-lite;
+				border-color: $color-orange;
+				cursor: not-allowed;
+			}
+		}
+	}
+
+	&-view {
+		@include flex(center, center);
+		@include position(absolute, 0, 2px, null, null);
+		@include size(100%, 100%);
+		@include transition(all .3s);
+		background: $color-white;
+	}
+
+	input[type="checkbox"] {
+
+		&:checked {
+			+ .checker-view {
+
+				&:before {
+					content: "\f00c";
+					display: block;
+					@include transition(all .3s);
+					@include font(11px, 400, 1, #fff, $font-awesome);
+				}
+			}
+		}
+
+		&[disabled] {
+			+ .checker-view:before {
+				color: $color-gray-lite;
+			}
+		}
+
+	}
+
+	input[type="radio"] {
+
+		+ .checker-view {
+			border-radius: 100%;
+			background: $color-white;
+		}
+
+		&:checked {
+			color: red;
+
+			+ .checker-view:before {
+				content: "";
+				display: block;
+				@include size(12px, 12px);
+				border-radius: 100%;
+				background: $color-orange;
+			}
+		}
+
+		&[disabled] {
+			+ .checker-view:before {
+				background: $color-gray-lite;
+			}
+		}
+
+	}
+}
+
+.checker-item {
+	position: relative;
+	display: block;
+	cursor: pointer;
+	padding: 7px 0 0 15px;
+	line-height: 20px;
+
+	&.active {
+		color: $color-orange;
+	}
+
+	.checker,
+	> input {
+		@include position(absolute, 0, 0);
+	}
+}

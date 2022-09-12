@@ -1,0 +1,65 @@
+.social {
+	@include flex(center);
+}
+
+.social-list {
+	@include flex(center);
+	flex-direction: column;
+
+	> li {
+		a {
+			@include flex(center, center);
+			@include size(41px, 41px);
+			@include transition(all .3s);
+			background: $color-gray-lite;
+			text-decoration: none;
+
+			.fa5 {
+				@include font(16px, 900, 15px, $color-blue, null);
+			}
+
+			&:hover {
+				background: $color-blue;
+
+				.fa5 {
+					color: $color-white
+				}
+			}
+		}
+
+		& + li {
+			margin-top: 10px;
+		}
+	}
+}
+
+.social-icon {
+	@include flex(center, center);
+	@include size(41px, 41px);
+	@include transition(all .3s);
+	background: $color-gray-lite;
+	text-decoration: none;
+
+	.fa5 {
+		@include font(16px, 900, 15px, $color-blue, null);
+	}
+
+	&:hover {
+		background: $color-blue;
+
+		.fa5 {
+			color: $color-white
+		}
+	}
+}
+
+
+@media (max-width: 768px) {
+	.social {
+		&-init {
+			display: grid;
+			grid-template-columns: repeat(5, 1fr);
+			grid-gap: 10px;
+		}
+	}
+}

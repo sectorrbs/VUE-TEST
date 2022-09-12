@@ -1,0 +1,62 @@
+.filter {
+    @include flex(center);
+
+    &__dropdown {
+        position: relative;
+
+        &-arrow {
+            @include position(absolute, null, 13px, 10px, null);
+            @include font(15px, 500, null, $color-white);
+        }
+
+        &-select {
+            @include flex(center, flex-start);
+            @include font(15px, 500, null, $color-white);
+            @include size(250px, 40px);
+            background: $color-gray;
+            cursor: pointer;
+            padding: 0 30px 0 15px;
+        }
+
+        &-items {
+            @include position(absolute, 0);
+            width: 100%;
+            box-shadow: 0 4px 8px 0 rgba(34, 60, 80, 0.2);
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        &-item {
+            @include flex(center, center);
+            @include font(15px, 500, null, $color);
+            @include size(100%, 40px);
+            background: $color-gray-lite;
+            cursor: pointer;
+
+            &:hover {
+                background: darken($color-gray-lite, 10);
+            }
+        }
+
+        &.show {
+            .filter__dropdown-items {
+                opacity: 1;
+                visibility: visible;
+            }
+
+            .filter__dropdown-arrow {
+                transform: rotate(180deg);
+            }
+        }
+    }
+
+    &__input {
+        @include size(350px, 38px);
+        outline: 1px solid $color-gray;
+        padding: 0 15px;
+
+        &::placeholder {
+            color: rgba($color, .5);
+        }
+    }
+}

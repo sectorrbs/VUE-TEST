@@ -1,0 +1,28 @@
+.modal {
+    opacity: 0;
+    visibility: hidden;
+    @include transition;
+    @include position(fixed, 0, 0, null, null);
+    @include size(100%, 100%);
+    @include flex(center, center);
+    animation: fadeIn 0.5s linear;
+    background: rgba($color, .7);
+
+    &__window {
+        padding: 30px 15px 15px;
+        background: $color-white;
+        @include font(17px, 700, 23px, null, null);
+
+        &-actions {
+            @include flex(center, flex-end, nowrap);
+            width: 100%;
+            gap: 10px;
+            margin-top: 30px;
+        }
+    }
+
+    &.show {
+        opacity: 1;
+        visibility: visible;
+    }
+}

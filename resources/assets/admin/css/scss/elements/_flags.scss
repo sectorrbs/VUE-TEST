@@ -1,0 +1,60 @@
+/* DEFAULT SETTINGS
+------------------------------------------------------------------------ */
+
+.flag {
+	display: inline-block;
+	@include size(30px, 20px);
+	background: transparent no-repeat center;
+	background-size: 100% 100%;
+	
+	&-xs {
+		@include size(15px, 10px);
+	}
+	&-sm {
+		@include size(20px, 13px);
+	}
+	&-lg {
+		@include size(45px, 30px);
+	}
+	&-xl {
+		@include size(60px, 40px);
+	}
+}
+
+
+/* LIST
+------------------------------------------------------------------------ */
+
+.flag-list {
+	@include flex(stretch);
+	margin-bottom: $margin;
+	
+	> li {
+		margin: 0 20px 20px 0;
+	}
+}
+
+
+/* COUNTRIES
+------------------------------------------------------------------------ */
+
+.flag {
+	&-by {
+		background-image: url('/assets/plugins/flags/by.svg');
+	}
+	&-en {
+		background-image: url('/assets/plugins/flags/en.svg');
+	}
+	&-ru {
+		background-image: url('/assets/plugins/flags/ru.svg');
+	}
+	&-de {
+		background-image: url('/assets/plugins/flags/de.svg');
+	}
+	&-fr {
+		background-image: url('/assets/plugins/flags/fr.svg');
+	}
+	&-ua {
+		background-image: url('/assets/plugins/flags/ua.svg');
+	}
+}

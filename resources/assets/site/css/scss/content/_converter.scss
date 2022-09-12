@@ -1,0 +1,205 @@
+.converter {
+    &__lists {
+        margin: 50px;
+
+        &-headers {
+            @include flex(center, null, nowrap)
+        }
+
+        &-header {
+            @include font(14px, 700, null, $color-white);
+            @include flex(center, center);
+            text-transform: uppercase;
+            height: 40px;
+            background: $color-error;
+        }
+
+        &-bar {
+            @include flex(center, space-between);
+            margin-bottom: 30px;
+        }
+    }
+
+    &__list {
+        @include flex(center, center, nowrap);
+        @include transition(.2s);
+        background: $color-gray-lite;
+
+        &:hover {
+            background: darken($color-gray-lite, 10);
+        }
+
+        &-item {
+            @include flex(center, center);
+            gap: 10px;
+            height: 40px;
+        }
+
+        &-previous {
+            @include font(13px, 700);
+            transform: translateY(-3px);
+        }
+
+        &-arrow {
+            @include font(20px, null);
+
+            &.arrow--up {
+                color: $color-success;
+                transform: translateY(7px);
+            }
+
+            &.arrow--down {
+                color: $color-red;
+                transform: translateY(-2px);
+            }
+        }
+
+        &-switchers {
+            @include flex(center, flex-end);
+            gap: 20px;
+        }
+
+        &-switcher {
+            @include size(80px, 30px);
+            @include flex(center);
+            border: 2px solid $color-gray;
+            cursor: pointer;
+            position: relative;
+
+            &::before {
+                content: '';
+                @include size(50%, 100%);
+                @include position(absolute, null, 0, 0, null);
+                background: $color-gray;
+            }
+
+            &.disabled {
+                &::before {
+                    @include position(absolute, 0, 0, null, null);
+                }
+            }
+        }
+    }
+
+    &__wrapper {
+        @include flex(center, center, nowrap);
+        margin-top: 150px;
+    }
+
+    &__box {
+        &-title {
+            @include font(15px, null, 15px, $color-white, null);
+            padding: 7px 32px 7px 7px;
+            background: $color-gray;
+            position: relative;
+
+            &.opened {
+                &:hover {
+                    cursor: pointer;
+                    background: lighten($color-gray, 10);
+                }
+            }
+        }
+
+        &-currencies {
+            @include position(absolute, 0, 29px);
+            height: 300px;
+            overflow-y: scroll;
+            width: 100%;
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        &-currency {
+            @include font(13px);
+            background: $color-gray-lite;
+            color: $color;
+            min-height: 29px;
+            padding: 7px 5px;
+            width: 100%;
+
+            &:hover {
+                background: darken($color-gray-lite, 10);
+            }
+        }
+
+        &-input {
+            @include size(400px, 45px);
+            border: 1px solid $color;
+            padding: 0 15px;
+
+            &.disabled {
+                background: $color-gray-lite;
+            }
+        }
+
+        &-action {
+            @include flex(stretch);
+            @include font(18px, null, 15px, null, null);
+            gap: 2px;
+            margin: 0 10px;
+            cursor: pointer;
+            padding: 10px 0;
+
+            &:hover {
+                color: $color-gray
+            }
+        }
+
+        &-icon {
+            @include position(absolute, null, 9px, 10px, null);
+            @include font(15px, 500, null, $color-white);
+        }
+
+        &.show {
+            .converter__box-currencies {
+                opacity: 1;
+                visibility: visible;
+            }
+
+            .converter__box-icon {
+                transform: rotate(180deg);
+            }
+        }
+    }
+}
+
+
+.switcher {
+    @include font(12px, 700);
+    @include flex(center, center);
+    width: 50%;
+
+    &__title {
+        @include font(14px, 700, 15px, null, null);
+    }
+
+    &--red {
+        color: $color-red;
+    }
+
+    &--green {
+        color: $color-success;
+    }
+}
+
+.item--numcode {
+    width: 10%;
+}
+
+.item--charcode {
+    width: 10%;
+}
+
+.item--nominal {
+    width: 10%;
+}
+
+.item--name {
+    width: 40%;
+}
+
+.item--value {
+    width: 30%;
+}
+

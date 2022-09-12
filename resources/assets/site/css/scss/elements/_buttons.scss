@@ -1,0 +1,76 @@
+/* DEFAULT
+--------------------------------------------------------*/
+
+.btn {
+    @include inline;
+    @include size(null, $form-height);
+    @include font(17px, 700, $form-height, $color-white);
+    @include text(center, none);
+    padding: 0 30px;
+    border-radius: 5px;
+    background: $color-red;
+    @include transition;
+
+    &:hover {
+        background: darken($color-red, 20%);
+        cursor: pointer;
+    }
+
+    &.disabled {
+        background: $color-red;
+        opacity: .7;
+        pointer-events: none;
+    }
+
+}
+
+.btn-rounded {
+    border-radius: 30px;
+}
+
+.btn-white {
+    background: $color-white;
+    color: $color-blue;
+
+    &:hover {
+        background: #101A35;
+        color: $color-white
+    }
+}
+
+
+/* SIZES
+--------------------------------------------------------*/
+
+.btn-xl {
+    height: $form-height-xl;
+    line-height: $form-height-xl;
+    width: 100%;
+    text-align: center;
+}
+
+.btn-xs {
+    height: $form-height-xs;
+    line-height: $form-height-xs;
+    padding: 0 15px;
+}
+
+
+/* COLORS
+--------------------------------------------------------*/
+
+.btn-gray {
+    background: #686868;
+
+    &:hover {
+        background: darken(#686868, 10%);
+    }
+}
+
+.btn-green {
+    background: #128b21;
+
+    &:hover {
+        background: darken(#128b21, 10%);
+    }
+}

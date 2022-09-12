@@ -1,0 +1,42 @@
+.pagination {
+    @include flex(center, center);
+    margin: 40px 0;
+
+    &__item {
+        background: $color-red;
+    }
+
+    &__link {
+        @include transition;
+        @include font(20px, 700, 15px, $color-white, null);
+        @include flex(center, center);
+        @include size(45px, 45px);
+        flex-shrink: 0;
+        text-decoration: none;
+
+        &:hover {
+            background: $color-white;
+            color: $color-red;
+        }
+
+        &.active {
+            background: $color-white;
+            color: $color-red;
+            pointer-events: none;
+        }
+    }
+
+    > li {
+        &:first-child,
+        &:last-child {
+            @include flex(center, center);
+            width: 130px;
+
+            a {
+                &:hover {
+                    background: transparent;
+                }
+            }
+        }
+    }
+}

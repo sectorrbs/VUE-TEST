@@ -1,0 +1,15 @@
+.color-orange {
+	color: $color-orange;
+}
+
+.color-gray {
+	color: $color-gray;
+	
+	&-lite {
+		color: $color-gray-lite;
+	}
+}
+
+.required {
+	color: $color-error;
+}

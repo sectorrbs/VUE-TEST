@@ -1,0 +1,152 @@
+.gallery-list {
+	@include flex(stretch, flex-start);
+	
+	> div {
+		margin: 0 20px 20px 0;
+		height: 100%;
+	}
+	
+	&-float {
+		position: relative;
+		
+		> div {
+			float: left;
+			transition: none;
+			margin: 10px;
+		}
+		
+		&:after {
+			content: '';
+			display: block;
+			width: 100%;
+			clear: both;
+		}
+	}
+}
+
+.gallery-item {
+	position: relative;
+	border: 1px solid $border-color;
+	padding: 3px;
+	width: 250px;
+	max-width: 100%;
+	@include transition;
+	
+	.img {
+		display: block;
+		text-decoration: none;
+		
+		img {
+			display: block;
+			width: 100%;
+		}
+	}
+	
+	.actions {
+		padding: 8px 5px 5px;
+	}
+	
+	.links {
+		@include position(absolute, null, 8px, 8px, null, 10);
+	}
+	
+	&:hover {
+		border-color: $color-info;
+	}
+}
+
+
+/* IMGLOADER STUFF
+--------------------------------------------------------*/
+
+.gallery-upload {
+	position: relative;
+	z-index: 10;
+	height: 130px;
+	border: 1px dashed $color-info;
+	background: $color-mute-info;
+	
+	input {
+		&[type="radio"], &[type="file"] {
+			display: none;
+		}
+	}
+	
+	
+	
+	&-panel {
+		@include position(absolute, 0, 0);
+		@include flex(center, center);
+		@include size(100%, 100%);
+		@include transition;
+		color: $color-info;
+		background: $color-mute-info;
+		
+		.title {
+			position: relative;
+			@include font(16px, 700);
+		}
+		.fa5 {
+			@include font(22px);
+			margin-right: 15px;
+		}
+	}
+	
+	&-link {
+		position: relative;
+		z-index: 2;
+		cursor: pointer;
+		
+		&:hover {
+			color: $color-space;
+		}
+	}
+	
+	&-loader {
+		opacity: 0;
+		
+		.title {
+			
+			&:after {
+				content: "";
+				@include position(absolute, 100%, null, null, 0);
+				-webkit-animation: loaderDots 3s linear infinite;
+				-moz-animation: loaderDots 3s linear infinite;
+				-ms-animation: loaderDots 3s linear infinite;
+				-o-animation: loaderDots 3s linear infinite;
+				animation: loaderDots 1s linear infinite;
+			}
+		}
+	}
+	
+	&-draghover {
+		opacity: 0;
+	}
+	
+	&.onload {
+		.gallery-upload-link {
+			opacity: 0;
+		}
+		.gallery-upload-loader {
+			//z-index: 5;
+			opacity: 1;
+		}
+	}
+	
+	&.draghover {
+		.gallery-upload-link {
+			opacity: 0;
+		}
+		.gallery-upload-draghover {
+			//z-index: 5;
+			opacity: 1;
+		}
+	}
+}
+
+@keyframes loaderDots {
+	0% {content: "";}
+	25% {content: ".";}
+	50% {content: "..";}
+	75% {content: "...";}
+}
